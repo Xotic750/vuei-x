@@ -38,4 +38,4 @@ Run `npm run production`. The production-ready code will be located under `dist`
 
 ## Licence
 
-_i-view-core-x_ is available under MIT.
+_vuei-x_ is available under MIT.
