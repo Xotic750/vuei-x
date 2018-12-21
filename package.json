@@ -29,6 +29,7 @@
     "report": "npm run clean && NODE_ENV=production webpack --bail --config webpack.config.js --progress --profile --colors --env.report",
     "start": "nodemon --exec \"npm run production\" -e js,json,vue,gif --watch src --watch src/locales --watch src/images",
     "storybook": "start-storybook -p 9001 -c Storybook/.storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "test": "jest"
   },
   "author": {
@@ -69,6 +70,7 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/runtime": "^7.2.0",
     "@prorenata/eslint-config-vue": "^1.9.0",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/vue": "^4.1.2",
     "autoprefixer": "^9.4.3",
     "babel-core": "^7.0.0-0",
