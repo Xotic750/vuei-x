@@ -1,4 +1,4 @@
-# ES6 Babel Vue library boilerplate using Webpack
+# Vuejs UI components
 
 [![Travis](https://img.shields.io/travis/Xotic750/vuei-x/master.svg?style=flat-square)](https://travis-ci.org/Xotic750/vuei-x) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
@@ -17,6 +17,10 @@ Make sure you have Node.js installed.
 1. `git clone https://github.com/Xotic750/vuei-x.git`
 2. Run `npm install`
 3. Start the dev server using `npm start`
+
+For storybook.
+
+3. Start storybook server using `npm run storybook`
 
 ## Available Commands
 

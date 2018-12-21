@@ -1,0 +1,6 @@
+!.eslintrc.js
+!jest.config.js
+Libs/
+dist/
+__tests__/coverage/
+src/index.js
