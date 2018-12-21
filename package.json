@@ -29,6 +29,7 @@
     "report": "npm run clean && NODE_ENV=production webpack --bail --config webpack.config.js --progress --profile --colors --env.report",
     "start": "nodemon --exec \"npm run production\" -e js,json,vue,gif --watch src --watch src/locales --watch src/images",
     "storybook": "start-storybook -p 9001 -c Storybook/.storybook",
+    "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages",
     "test": "jest"
   },
