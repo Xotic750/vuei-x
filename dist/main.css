@@ -1,0 +1,364 @@
+/*!
+{
+  "copyrite": "Copyright (c) 2017-present",
+  "date": "2018-12-21T12:33:50.891Z",
+  "describe": "",
+  "description": "Vue UI library",
+  "file": "main.css",
+  "hash": "5efe2c71de50318b1680",
+  "license": "MIT",
+  "version": "0.0.1"
+}
+*/
+.space-before::before {
+  content: ' ';
+  white-space: pre;
+  display: inline-flex;
+}
+.space-after::after {
+  content: ' ';
+  white-space: pre;
+  display: inline-flex;
+}
+.none {
+  display: none !important;
+}
+.hidden {
+  visibility: hidden !important;
+}
+
+
+button.button-x {
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  outline: none;
+  margin: 0;
+  border-style: solid;
+  border-width: 0.0625rem;
+  border-color: #c0c0c0 #9a9a9a #9a9a9a #c0c0c0;
+  border-radius: 0.25rem;
+  position: relative;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  height: 2.375rem;
+  background-color: inherit;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s border-color, 0.4s box-shadow;
+}
+button.button-x::-moz-focus-inner {
+  border: none;
+}
+button.button-x.solid {
+  border-style: solid;
+}
+button.button-x.dotted {
+  border-style: dotted;
+}
+button.button-x.dashed {
+  border-style: dashed;
+}
+button.button-x.borderless {
+  border: none;
+}
+button.button-x.block {
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  display: flex;
+  width: 100%;
+}
+button.button-x.block + button.button-x.block {
+  margin-top: 0.3125rem;
+}
+button.button-x:disabled,
+button.button-x[data-disabled] {
+  opacity: 0.65;
+  cursor: default;
+}
+button.button-x:not(.circle):not(.square) {
+  padding: 0.125rem 0.75rem;
+}
+button.button-x:not(.circle):not(.square).small {
+  font-size: 0.75rem;
+  height: 1.75rem;
+}
+button.button-x:not(.circle):not(.square).small:not(.right-angled):not(.pill) {
+  border-radius: 0.1875rem;
+}
+button.button-x:not(.circle):not(.square).large {
+  font-size: 1.375rem;
+  height: 2.75rem;
+}
+button.button-x:not(.circle):not(.square).large:not(.right-angled):not(.pill) {
+  border-radius: 0.3125rem;
+}
+button.button-x.right-angled {
+  border-radius: 0;
+}
+button.button-x.circle,
+button.button-x.pill {
+  border-radius: 1.1875rem;
+}
+button.button-x.circle,
+button.button-x.square {
+  padding: 0;
+  height: 2.375rem;
+  width: 2.375rem;
+  font-size: 0;
+}
+button.button-x.circle.small {
+  border-radius: 0.875rem;
+  height: 1.75rem;
+  width: 1.75rem;
+}
+button.button-x.circle.large {
+  border-radius: 1.375rem;
+  height: 2.75rem;
+  width: 2.75rem;
+}
+button.button-x.square {
+  border-radius: 0;
+}
+button.button-x.square.small {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+button.button-x.square.large {
+  height: 2.75rem;
+  width: 2.75rem;
+}
+button.button-x.pill.small {
+  border-radius: 0.875rem;
+  height: 1.75rem;
+}
+button.button-x.pill.large {
+  border-radius: 1.375rem;
+  height: 2.75rem;
+}
+button.button-x.primary:not(:active),
+button.button-x.primary:disabled,
+button.button-x.primary[data-disabled] {
+  background-color: #007bff;
+  color: #ffffff;
+}
+button.button-x.secondary:not(:active),
+button.button-x.secondary:disabled,
+button.button-x.secondary[data-disabled] {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+button.button-x.info:not(:active),
+button.button-x.info:disabled,
+button.button-x.info[data-disabled] {
+  background-color: #17a2b8;
+  color: #ffffff;
+}
+button.button-x.success:not(:active),
+button.button-x.success:disabled,
+button.button-x.success[data-disabled] {
+  background-color: #28a745;
+  color: #ffffff;
+}
+button.button-x.warning:not(:active),
+button.button-x.warning:disabled,
+button.button-x.warning[data-disabled] {
+  background-color: #ffc107;
+  color: #000000;
+}
+button.button-x.error:not(:active),
+button.button-x.error:disabled,
+button.button-x.error[data-disabled] {
+  background-color: #dc3544;
+  color: #ffffff;
+}
+button.button-x.dark:not(:active),
+button.button-x.dark:disabled,
+button.button-x.dark[data-disabled] {
+  background-color: #343a40;
+  color: #ffffff;
+}
+button.button-x.light:not(:active),
+button.button-x.light:disabled,
+button.button-x.light[data-disabled] {
+  background-color: #f8f9fa;
+  color: #000000;
+}
+button.button-x:not(:disabled):not([data-disabled]):focus {
+  box-shadow: 0 0 0 0.125rem #00bfff;
+}
+button.button-x:not(:disabled):not([data-disabled]):hover {
+  box-shadow: 0 0 0 0.125rem #0000cd;
+}
+button.button-x:not(:disabled):not([data-disabled]):active {
+  box-shadow: 0 0 0 0.125rem #006dd9;
+}
+button.button-x:not(:disabled):not([data-disabled]):active > * {
+  position: relative;
+}
+button.button-x:not(:disabled):not([data-disabled]):active:not(.borderless) {
+  border-color: #9a9a9a #c0c0c0 #c0c0c0 #9a9a9a;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.primary {
+  background-color: #0074f0;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.secondary {
+  background-color: #656d75;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.info {
+  background-color: #1596aa;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.success {
+  background-color: #259b40;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.warning {
+  background-color: #f7b900;
+  color: #000000;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.error {
+  background-color: #da2838;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.dark {
+  background-color: #2d3238;
+  color: #ffffff;
+}
+button.button-x:not(:disabled):not([data-disabled]):active.light {
+  background-color: #eff1f4;
+  color: #000000;
+}
+
+
+div.button-group-x {
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  outline: none;
+  margin: 0;
+  border: none;
+  border-color: #c0c0c0 #9a9a9a #9a9a9a #c0c0c0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background-color: inherit;
+  color: inherit;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  display: inline-flex;
+  align-items: center;
+  vertical-align: bottom;
+}
+div.button-group-x > button.button-x:not(:disabled):not([data-disabled]):focus {
+  z-index: 1;
+}
+div.button-group-x > button.button-x:not(:disabled):not([data-disabled]):hover {
+  z-index: 2;
+}
+div.button-group-x[data-vertical] {
+  flex-direction: column;
+}
+div.button-group-x[data-vertical] > button.button-x:not(.circle):not(.square):not(.right-angled):first-of-type:not(:last-of-type) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+div.button-group-x[data-vertical] > button.button-x:not(.circle):not(.square):not(.right-angled):last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+div.button-group-x[data-vertical] > button.button-x:not(.circle):not(.square):not(.right-angled):not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+div.button-group-x:not([data-vertical]) {
+  flex-direction: row;
+  /* stylelint-disable-next-line no-descending-specificity */
+}
+div.button-group-x:not([data-vertical]) > button.button-x:not(.circle):not(.square):not(.right-angled):first-of-type:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+div.button-group-x:not([data-vertical]) > button.button-x:not(.circle):not(.square):not(.right-angled):last-of-type:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+div.button-group-x:not([data-vertical]) > button.button-x:not(.circle):not(.square):not(.right-angled):not(:first-of-type):not(:last-of-type) {
+  border-radius: 0;
+}
+div.button-group-x.primary {
+  background-color: #007bff;
+}
+div.button-group-x.secondary {
+  background-color: #6c757d;
+}
+div.button-group-x.info {
+  background-color: #17a2b8;
+}
+div.button-group-x.success {
+  background-color: #28a745;
+}
+div.button-group-x.warning {
+  background-color: #ffc107;
+}
+div.button-group-x.error {
+  background-color: #dc3544;
+}
+div.button-group-x.dark {
+  background-color: #343a40;
+}
+div.button-group-x.light {
+  background-color: #f8f9fa;
+}
+
+
+span.icon-x {
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  display: inline-flex;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  outline: none;
+  margin: 0;
+  border: 0.0625rem none;
+  border-color: #c0c0c0 #9a9a9a #9a9a9a #c0c0c0;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background-color: inherit;
+  color: inherit;
+}
+span.icon-x.right-angled {
+  border-radius: 0;
+}
+span.icon-x.solid {
+  border-style: solid;
+}
+span.icon-x.dotted {
+  border-style: dotted;
+}
+span.icon-x.dashed {
+  border-style: dashed;
+}
+span.icon-x.primary {
+  background-color: #007bff;
+}
+span.icon-x.secondary {
+  background-color: #6c757d;
+}
+span.icon-x.info {
+  background-color: #17a2b8;
+}
+span.icon-x.success {
+  background-color: #28a745;
+}
+span.icon-x.warning {
+  background-color: #ffc107;
+}
+span.icon-x.error {
+  background-color: #dc3544;
+}
+span.icon-x.dark {
+  background-color: #343a40;
+}
+span.icon-x.light {
+  background-color: #f8f9fa;
+}
+
+
+/*# sourceMappingURL=main.css.map*/

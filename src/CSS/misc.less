@@ -1,0 +1,23 @@
+@space: ' ';
+
+.spacer() {
+  content: @space;
+  white-space: pre;
+  display: inline-flex;
+}
+
+.space-before::before {
+  .spacer();
+}
+
+.space-after::after {
+  .spacer();
+}
+
+.none {
+  display: none !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
