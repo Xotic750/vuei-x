@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import isProduction from 'Utils/isProduction';
+import isProduction from '../../src/Utils/isProduction';
 
 // https://vuejs.org/v2/api/#Global-Config
 Object.assign(Vue.config, {
