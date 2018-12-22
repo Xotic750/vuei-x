@@ -30,6 +30,7 @@
     "start": "nodemon --exec \"npm run production\" -e js,json,vue,gif --watch src --watch src/locales --watch src/images",
     "storybook": "start-storybook -p 9001 -c Storybook/.storybook",
     "build-storybook": "build-storybook -c Storybook/.storybook -o docs",
+    "deploy-storybook": "storybook-to-ghpages",
     "test": "jest"
   },
   "author": {
@@ -70,6 +71,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/runtime": "^7.2.0",
     "@prorenata/eslint-config-vue": "^1.9.0",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/vue": "^4.1.3",
     "autoprefixer": "^9.4.3",
     "babel-core": "^7.0.0-0",
