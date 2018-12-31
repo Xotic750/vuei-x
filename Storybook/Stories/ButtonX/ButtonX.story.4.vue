@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <template v-for="button in buttons">
+    <template v-for="(button, i) in buttons">
       <button-x
-        :key="button.label"
+        :key="i"
         :class="button.class"
-        :title="button.class"
+        :title="[...button.class, button.justify]"
         :type="button.type"
-        @click="onClick"
+        :justify="button.justify"
+        @click="logEvent('click', $event)"
       >
         <icon-x :class="button.icon.class"></icon-x>
         <span class="space-before">
           {{ button.label }}
         </span>
       </button-x>
-      {{ }}
     </template>
   </div>
 </template>
@@ -33,15 +33,7 @@ export default {
     return {
       buttons: [
         {
-          class: ['block', 'primary'],
-          icon: {
-            class: ['fugue-icon', 'fugue-tick'],
-          },
-          label: 'Yes',
-          type: 'button',
-        },
-        {
-          class: ['block', 'secondary', ' pill'],
+          class: ['block', 'secondary', 'pill'],
           icon: {
             class: ['fugue-icon', 'fugue-cross'],
           },
@@ -49,7 +41,23 @@ export default {
           type: 'button',
         },
         {
-          class: ['block', 'info', 'dashed', 'right-angled'],
+          class: ['block', 'primary', 'left'],
+          icon: {
+            class: ['fugue-icon', 'fugue-tick'],
+          },
+          label: 'Yes',
+          type: 'button',
+        },
+        {
+          class: ['block', 'secondary', 'pill', 'center'],
+          icon: {
+            class: ['fugue-icon', 'fugue-cross'],
+          },
+          label: 'No',
+          type: 'button',
+        },
+        {
+          class: ['block', 'info', 'dashed', 'right-angled', 'right'],
           icon: {
             class: ['fugue-icon', 'fugue-question'],
           },

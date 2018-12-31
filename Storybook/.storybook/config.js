@@ -1,3 +1,4 @@
+import 'StoryBook/.storybook/polyfill.config';
 import 'Configs/logger.config';
 import 'StoryBook/.storybook/vue.config';
 import 'CSS/styles.less';

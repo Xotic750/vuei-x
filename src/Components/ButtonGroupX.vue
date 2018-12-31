@@ -1,9 +1,9 @@
 <template>
   <div
-    v-if="!hide"
-    class="button-group-x"
-    :data-disabled="disabled"
-    :data-vertical="vertical"
+    class="vuix vuix-button-group"
+    data-wrapper-only="true"
+    :data-disabled="isDisabled"
+    v-bind="$attrs"
   >
     <slot></slot>
   </div>
@@ -21,41 +21,39 @@ export default {
       default: false,
       type: Boolean,
     },
-    hide: {
-      default: false,
-      type: Boolean,
-    },
-    vertical: {
-      default: false,
-      type: Boolean,
+  },
+
+  data() {
+    return {
+      disable: false,
+    };
+  },
+
+  computed: {
+    isDisabled() {
+      return Boolean(this.disabled || this.disable);
     },
   },
 
   watch: {
     disabled(value) {
-      this.disable(value);
+      this.disableButtons(value);
     },
   },
 
   mounted() {
-    this.disable(this.disabled);
+    this.disableButtons(this.disabled);
   },
 
   methods: {
-    disable(state) {
+    disableButtons(state) {
       const boolState = Boolean(state);
 
       this.$slots.default.forEach(({componentInstance, elm}) => {
-        const {classList, dataset, nodeName} = Object(elm);
+        const {classList, nodeName} = Object(elm);
 
-        if (nodeName === BUTTON_NODE_NAME && classList.contains('button-x')) {
-          componentInstance.disabled = boolState;
-
-          if (boolState) {
-            dataset.disabled = String(boolState);
-          } else {
-            delete dataset.disabled;
-          }
+        if (nodeName === BUTTON_NODE_NAME && classList.contains('vuix-button')) {
+          componentInstance.disable = boolState;
         }
       });
     },
@@ -66,7 +64,7 @@ export default {
 <style lang="less">
 @import '~CSS/variables.less';
 
-div.button-group-x {
+div.vuix-button-group {
   /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   outline: none;
   margin: @zero;
@@ -74,14 +72,14 @@ div.button-group-x {
   border-color: @border-top-color @border-right-color @border-bottom-color @border-left-color;
   border-radius: @radius-default;
   font-size: @font-size-default;
-  background-color: inherit;
+  background-color: transparent;
   color: inherit;
   /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   display: inline-flex;
   align-items: center;
   vertical-align: bottom;
 
-  & > button.button-x:not(:disabled):not([data-disabled]) {
+  & > button.vuix-button:not(:disabled) {
     &:focus {
       z-index: 1;
     }
@@ -91,10 +89,10 @@ div.button-group-x {
     }
   }
 
-  &[data-vertical] {
+  &.vertical {
     flex-direction: column;
 
-    & > button.button-x:not(.circle):not(.square):not(.right-angled) {
+    & > button.vuix-button:not(.circle):not(.square):not(.right-angled) {
       &:first-of-type:not(:last-of-type) {
         border-bottom-left-radius: @zero;
         border-bottom-right-radius: @zero;
@@ -111,11 +109,11 @@ div.button-group-x {
     }
   }
 
-  &:not([data-vertical]) {
+  &:not(.vertical) {
     flex-direction: row;
 
     /* stylelint-disable-next-line no-descending-specificity */
-    & > button.button-x:not(.circle):not(.square):not(.right-angled) {
+    & > button.vuix-button:not(.circle):not(.square):not(.right-angled) {
       &:first-of-type:not(:last-of-type) {
         border-top-right-radius: @zero;
         border-bottom-right-radius: @zero;
@@ -131,12 +129,5 @@ div.button-group-x {
       }
     }
   }
-
-  each(@selectors-color, {
-    // noinspection LessUnresolvedVariable
-    &.@{value} {
-      background-color: @@value;
-    }
-  });
 }
 </style>

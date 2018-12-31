@@ -12,10 +12,10 @@
               <div :key="j">
                 <h2>Shape: {{ shape || 'default' }}</h2>
                 <template v-for="(size, k) of sizes">
-                  <button-x
+                  <input-x
                     :key="k"
-                    :title="joinClasses(border, shape, size, type)"
                     :class="[border, shape, size, type]"
+                    @clear="logEvent('clear', $event)"
                     @click="logEvent('click', $event)"
                     @change="logEvent('change', $event)"
                     @input="logEvent('input', $event)"
@@ -52,7 +52,7 @@
                     @pointerover="logEvent('pointerover', $event)"
                     @pointerup="logEvent('pointerup', $event)"
                   >
-                  </button-x>
+                  </input-x>
                 </template>
               </div>
             </template>
@@ -65,19 +65,19 @@
 
 <script>
 import methods from 'Stories/methods';
-import {ButtonX} from 'SRC';
+import {InputX} from 'SRC';
 
 export default {
-  name: 'XButton1',
+  name: 'InputX1',
 
-  components: {ButtonX},
+  components: {InputX},
 
   mixins: [methods],
 
   data() {
     return {
       sizes: ['small', '', 'large'],
-      shapes: ['', 'round', 'circle', 'square', 'pill', 'right-angled'],
+      shapes: ['', 'pill', 'right-angled'],
       types: ['', 'primary', 'secondary', 'info', 'success', 'warning', 'error', 'dark', 'light'],
       borders: ['', 'borderless', 'solid', 'dotted', 'dashed'],
     };

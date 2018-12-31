@@ -24,10 +24,10 @@
                             :key="count"
                             :class="[border, shape, size, type]"
                             :title="joinClasses(border, shape, size, type)"
-                            @click="onClick"
+                            @click="logEvent('click', $event)"
                           >
                             <span
-                              v-if="content"
+                              v-if="content && shape !== 'circle' && shape !== 'square'"
                               class="space-after"
                             >
                               {{ size || 'default' }} {{ count }}
@@ -66,9 +66,9 @@ export default {
     return {
       contents: [true],
       sizes: ['small', '', 'large'],
-      shapes: ['', 'circle', 'square', 'pill', 'right-angled'],
+      shapes: ['', 'round', 'circle', 'square', 'pill', 'right-angled'],
       types: ['', 'primary', 'secondary', 'info', 'success', 'warning', 'error', 'dark', 'light'],
-      borders: ['', 'dotted', 'dashed', 'borderless'],
+      borders: ['', 'borderless', 'solid', 'dotted', 'dashed'],
     };
   },
 };

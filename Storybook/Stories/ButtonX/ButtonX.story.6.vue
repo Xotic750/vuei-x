@@ -1,26 +1,13 @@
 <template>
   <div class="container">
     <button-x
-      :class="['primary']"
-      :title="joinClasses('primary')"
-      @click="onClick"
+      v-for="i in [1, 2, 3]"
+      :key="i"
+      :class="['primary', 'center', i === 2 ? 'none' : '']"
+      :title="joinClasses('primary', 'center', i === 2 ? 'hidden' : '')"
+      @click="logEvent('click', $event)"
     >
-      {{ 1 }}
-    </button-x>
-    <button-x
-      :class="['primary']"
-      :title="joinClasses('primary')"
-      hide
-      @click="onClick"
-    >
-      {{ 2 }}
-    </button-x>
-    <button-x
-      :class="['primary']"
-      :title="joinClasses('primary')"
-      @click="onClick"
-    >
-      {{ 3 }}
+      {{ i }}
     </button-x>
   </div>
 </template>

@@ -1,5 +1,13 @@
 <template>
-  <span class="icon-x"></span>
+  <span
+    class="vuix vuix-icon"
+    role="presentation"
+    data-shapeable="true"
+    data-borderable="true"
+    data-colorable="true"
+    v-bind="$attrs"
+    v-on="$listeners"
+  ></span>
 </template>
 
 <script>
@@ -13,35 +21,17 @@ export default {
 <style lang="less">
 @import '~CSS/variables.less';
 
-span.icon-x {
-  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-  display: inline-flex;
+span.vuix-icon {
   /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   outline: none;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  display: inline-flex;
   margin: @zero;
   border: @border-width none;
   border-color: @border-top-color @border-right-color @border-bottom-color @border-left-color;
-  border-radius: @radius-default;
+  border-radius: @zero;
   font-size: @font-size-default;
-  background-color: inherit;
+  background-color: transparent;
   color: inherit;
-
-  &.right-angled {
-    border-radius: @zero;
-  }
-
-  each(@selectors-border-style, {
-    // noinspection LessUnresolvedVariable
-    &.@{value} {
-      border-style: @value;
-    }
-  });
-
-  each(@selectors-color, {
-    // noinspection LessUnresolvedVariable
-    &.@{value} {
-      background-color: @@value;
-    }
-  });
 }
 </style>

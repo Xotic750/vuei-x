@@ -1,23 +1,35 @@
 <template>
   <button
-    v-if="!hide"
-    class="button-x"
+    class="vuix vuix-button"
+    role="button"
+    data-shapeable="true"
+    data-borderable="true"
+    data-colorable="true"
+    data-blockable="true"
+    data-focusable="true"
+    data-hoverable="true"
+    data-activatable="true"
+    :data-disabled="isDisabled"
+    :disabled="isDisabled"
+    :aria-disabled="isDisabled"
+    v-bind="$attrs"
     @click="onClick"
+    v-on="$listeners"
   >
-    <slot></slot>
+    <span data-justifiable="true">
+      <slot></slot>
+    </span>
   </button>
 </template>
 
 <script>
 const NAME = 'ButtonX';
-const EMPTY_STRING = '';
-const TABINDEX_ATTRIBUTE = 'tabindex';
 
 export default {
   name: NAME,
 
   props: {
-    hide: {
+    disabled: {
       default: false,
       type: Boolean,
     },
@@ -25,40 +37,23 @@ export default {
 
   data() {
     return {
-      disabled: false,
-      oldTabindex: null,
+      disable: false,
     };
   },
 
-  watch: {
-    disabled(value, oldValue) {
-      if (value === true && oldValue === false) {
-        const {$el} = this;
-
-        this.oldTabindex = $el.getAttribute(TABINDEX_ATTRIBUTE);
-        $el.setAttribute(TABINDEX_ATTRIBUTE, -1);
-      } else if (value === false && oldValue === true) {
-        const {$el, oldTabindex} = this;
-
-        if (oldTabindex === null || oldTabindex === EMPTY_STRING) {
-          $el.removeAttribute(TABINDEX_ATTRIBUTE);
-        } else {
-          $el.setAttribute(TABINDEX_ATTRIBUTE, oldTabindex);
-        }
-
-        this.oldTabindex = null;
-      }
+  computed: {
+    isDisabled() {
+      return Boolean(this.disabled || this.disable);
     },
   },
 
   methods: {
-    onClick(event) {
-      if (this.disabled) {
-        event.preventDefault();
-      } else {
-        this.$el.focus();
-        this.$emit('click', event);
+    onClick() {
+      if (this.isDisabled) {
+        return;
       }
+
+      this.$el.focus();
     },
   },
 };
@@ -67,22 +62,19 @@ export default {
 <style lang="less">
 @import '~CSS/variables.less';
 
-button.button-x {
+button.vuix-button {
   /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   outline: none;
   margin: @zero;
+  padding: @padding @font-size-default;
   border-style: solid;
   border-width: @border-width;
   border-color: @border-top-color @border-right-color @border-bottom-color @border-left-color;
   border-radius: @radius-default;
   position: relative;
-  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-  display: inline-flex;
   vertical-align: middle;
-  align-items: center;
-  justify-content: center;
   height: @height-default;
-  background-color: inherit;
+  background-color: transparent;
   color: inherit;
   font-size: @font-size-default;
   cursor: pointer;
@@ -92,61 +84,33 @@ button.button-x {
     border: none;
   }
 
-  each(@selectors-border-style, {
+  each(@selectors-size, {
     // noinspection LessUnresolvedVariable
     &.@{value} {
-      border-style: @value;
+      @size: 'font-size-@{value}';
+      @height: 'height-@{value}';
+
+      font-size: @@size;
+      height: @@height;
     }
   });
 
-  &.borderless {
-    border: none;
-  }
-
-  &.block {
+  & > span[data-justifiable] {
     /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-    display: flex;
+    outline: none;
+    margin: @zero;
+    padding: @zero;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: inherit;
+    font-size: inherit;
     width: @full;
-
-    & + & {
-      margin-top: @margin-button-block;
-    }
+    height: @full;
   }
 
-  &:disabled,
-  &[data-disabled] {
-    opacity: @opacity-disabled;
-    cursor: default;
-  }
-
-  &:not(.circle):not(.square) {
-    padding: @padding @font-size-small;
-
-    each(@selectors-size, {
-      // noinspection LessUnresolvedVariable
-      &.@{value} {
-        @size: 'font-size-@{value}';
-        @height: 'height-@{value}';
-
-        font-size: @@size;
-        height: @@height;
-
-        &:not(.right-angled):not(.pill) {
-          @radius: 'radius-@{value}';
-
-          border-radius: @@radius;
-        }
-      }
-    });
-  }
-
-  &.right-angled {
+  &.square {
     border-radius: @zero;
-  }
-
-  &.circle,
-  &.pill {
-    border-radius: @height-default-half;
   }
 
   &.circle,
@@ -154,25 +118,11 @@ button.button-x {
     padding: @zero;
     height: @height-default;
     width: @height-default;
-    font-size: @zero;
-  }
+    // font-size: @zero;
 
-  &.circle {
-    each(@selectors-size, {
-      // noinspection LessUnresolvedVariable
-      &.@{value} {
-        @radius: 'height-@{value}-half';
-        @size: 'height-@{value}';
-
-        border-radius: @@radius;
-        height: @@size;
-        width: @@size;
-      }
-    });
-  }
-
-  &.square {
-    border-radius: @zero;
+    & > span[data-justifiable] {
+      border-radius: inherit;
+    }
 
     each(@selectors-size, {
       // noinspection LessUnresolvedVariable
@@ -183,58 +133,6 @@ button.button-x {
         width: @@size;
       }
     });
-  }
-
-  &.pill {
-    each(@selectors-size, {
-      // noinspection LessUnresolvedVariable
-      &.@{value} {
-        @radius: 'height-@{value}-half';
-        @height: 'height-@{value}';
-
-        border-radius: @@radius;
-        height: @@height;
-      }
-    });
-  }
-
-  each(@selectors-color, {
-    // noinspection LessUnresolvedVariable
-    &.@{value}:not(:active),
-    &.@{value}:disabled,
-    &.@{value}[data-disabled] {
-      background-color: @@value;
-      color: contrast(@@value);
-    }
-  });
-
-  &:not(:disabled):not([data-disabled]) {
-    each(@selectors-mouse, {
-      // noinspection LessUnresolvedVariable
-      &:@{value} {
-        @color: 'shadow-@{value}-color';
-
-        box-shadow: @zero @zero @zero @shadow-width @@color;
-      }
-    });
-
-    &:active {
-      & > * {
-        position: relative;
-      }
-
-      &:not(.borderless) {
-        border-color: @border-bottom-color @border-left-color @border-top-color @border-right-color;
-      }
-
-      each(@selectors-color, {
-        // noinspection LessUnresolvedVariable
-        &.@{value} {
-          background-color: darken(@@value, @color-darken-percentage);
-          color: contrast(@@value);
-        }
-      });
-    }
   }
 }
 </style>

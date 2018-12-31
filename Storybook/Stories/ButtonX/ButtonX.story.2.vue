@@ -17,22 +17,21 @@
                     <template v-for="(size, k) of sizes">
                       <button-x
                         :key="k"
-                        :class="[border, shape, size, type]"
-                        :title="joinClasses(border, shape, size, type)"
-                        @click="onClick"
+                        :class="[border, shape, size, type, 'center']"
+                        :title="joinClasses(border, shape, size, type, 'center')"
+                        @click="logEvent('click', $event)"
                       >
                         <icon-x
                           v-if="content"
                           :class="['fugue-icon', 'fugue-thumb-up']"
                         ></icon-x>
                         <span
-                          v-if="content"
+                          v-if="content && shape !== 'circle' && shape !== 'square'"
                           class="space-before"
                         >
                           {{ size || 'default' }}
                         </span>
                       </button-x>
-                      {{ }}
                     </template>
                   </div>
                 </template>
@@ -60,9 +59,9 @@ export default {
     return {
       contents: [true],
       sizes: ['small', '', 'large'],
-      shapes: ['', 'circle', 'square', 'pill', 'right-angled'],
+      shapes: ['', 'round', 'circle', 'square', 'pill', 'right-angled'],
       types: ['', 'primary', 'secondary', 'info', 'success', 'warning', 'error', 'dark', 'light'],
-      borders: ['', 'dotted', 'dashed', 'borderless'],
+      borders: ['', 'borderless', 'solid', 'dotted', 'dashed'],
     };
   },
 };

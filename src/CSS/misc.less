@@ -1,8 +1,11 @@
+@import '~CSS/variables.less';
+
 @space: ' ';
 
 .spacer() {
   content: @space;
   white-space: pre;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   display: inline-flex;
 }
 
@@ -20,4 +23,103 @@
 
 .hidden {
   visibility: hidden !important;
+}
+
+.vuix {
+  &[data-shapeable].round {
+    border-radius: @radius-default;
+  }
+
+  &[data-shapeable].pill {
+    border-radius: 1000000000rem;
+  }
+
+  &[data-shapeable].circle {
+    border-radius: @half;
+  }
+
+  &[data-shapeable].right-angled {
+    border-radius: @zero;
+  }
+
+  each(//noinspection CssInvalidAtRule
+  @selectors-border-style, {
+    // noinspection LessUnresolvedVariable
+    &[data-borderable].@{value} {
+      border-style: @value;
+    }
+  });
+
+  &[data-borderable].borderless {
+    border: none;
+  }
+
+  each(//noinspection CssInvalidAtRule
+  @selectors-color, {
+    // noinspection LessUnresolvedVariable
+    &[data-colorable].@{value} {
+      background-color: @@value;
+      color: contrast(@@value);
+    }
+  });
+
+  &[data-blockable].block,
+  &.vuix-input[data-blockable].block {
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+    display: flex;
+    width: @full;
+  }
+
+  each(//noinspection CssInvalidAtRule
+  @selectors-justify, {
+    // noinspection LessUnresolvedVariable
+    &.@{value} {
+      &[data-justifiable],
+      & > [data-justifiable] {
+        @justify: 'justify-@{value}';
+
+        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        display: flex;
+        align-items: center;
+        justify-content: @@justify;
+      }
+    }
+  });
+
+  &[data-focused]:not(:disabled):not([data-disabled]),
+  &[data-focusable]:not(:disabled):not([data-disabled]):focus {
+    box-shadow: @zero @zero @zero @shadow-width @shadow-focus-color;
+  }
+
+  &[data-hoverable]:not(:disabled):not([data-disabled]):hover {
+    box-shadow: @zero @zero @zero @shadow-width @shadow-hover-color;
+  }
+
+  &[data-active]:not(:disabled):not([data-disabled]),
+  &[data-activatable]:not(:disabled):not([data-disabled]):active {
+    box-shadow: @zero @zero @zero @shadow-width @shadow-active-color;
+
+    &:not(.borderless) {
+      border-color: @border-bottom-color @border-left-color @border-top-color @border-right-color;
+    }
+
+    & > * {
+      position: relative;
+    }
+
+    each(@selectors-color, {
+      // noinspection LessUnresolvedVariable
+      &.@{value} {
+        background-color: darken(@@value, @color-darken-percentage);
+      }
+    });
+  }
+
+  &[data-disabled]:not([data-wrapper-only]) {
+    cursor: default;
+
+    &:not([data-cross]) {
+      opacity: @opacity-disabled;
+    }
+  }
 }

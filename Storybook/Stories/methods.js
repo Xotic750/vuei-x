@@ -3,8 +3,8 @@ export default {
     joinClasses(...args) {
       return args.filter(Boolean).join(' ');
     },
-    onClick(event) {
-      logger.info('click', event);
+    logEvent(type, event) {
+      logger.info(type, event);
     },
   },
 };
