@@ -46,7 +46,7 @@ module.exports = {
   rules: {
     'no-empty-source': null,
     'no-missing-end-of-source-newline': null, // currently has a bug #3428
-    'prettier/prettier': false,
+    'prettier/prettier': null,
     'plugin/no-unsupported-browser-features': [true, {
       severity: 'warning',
     }],
