@@ -1,6 +1,6 @@
-# Vuejs UI components
+# Vuix - Vuejs UI components
 
-[![Travis](https://img.shields.io/travis/Xotic750/vuei-x/master.svg?style=flat-square)](https://travis-ci.org/Xotic750/vuei-x) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Travis](https://img.shields.io/travis/Xotic750/vuix/master.svg?style=flat-square)](https://travis-ci.org/Xotic750/vuix) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Includes: 
 
@@ -14,7 +14,7 @@ Includes:
 
 Make sure you have Node.js installed.
 
-1. `git clone https://github.com/Xotic750/vuei-x.git`
+1. `git clone https://github.com/Xotic750/vuix.git`
 2. Run `npm install`
 3. Start the dev server using `npm start`
 

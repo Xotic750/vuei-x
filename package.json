@@ -1,14 +1,14 @@
 {
-  "name": "vuei-x",
+  "name": "vuix",
   "version": "0.0.2",
   "description": "Vue UI library",
-  "homepage": "https://github.com/Xotic750/vuei-x.git",
+  "homepage": "https://github.com/Xotic750/vuix.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Xotic750/vuei-x.git"
+    "url": "https://github.com/Xotic750/vuix.git"
   },
   "bugs": {
-    "url": "https://github.com/Xotic750/vuei-x/issues"
+    "url": "https://github.com/Xotic750/vuix/issues"
   },
   "main": "dist/index.js",
   "scripts": {
