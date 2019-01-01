@@ -5,3 +5,4 @@ dist/
 __tests__/coverage/
 src/index.js
 docs/
+out*/

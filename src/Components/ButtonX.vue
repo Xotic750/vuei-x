@@ -109,6 +109,21 @@ button.vuix-button {
     height: @full;
   }
 
+  each(//noinspection CssInvalidAtRule
+  @selectors-justify, {
+    // noinspection LessUnresolvedVariable
+    &.@{value} {
+      & > span[data-justifiable] {
+        @justify: 'justify-@{value}';
+
+        /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+        display: flex;
+        align-items: center;
+        justify-content: @@justify;
+      }
+    }
+  });
+
   &.square {
     border-radius: @zero;
   }

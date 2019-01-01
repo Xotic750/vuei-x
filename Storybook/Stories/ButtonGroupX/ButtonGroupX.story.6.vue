@@ -22,8 +22,8 @@
                         <template v-for="count of [1]">
                           <button-x
                             :key="count"
-                            :class="[border, shape, size, type]"
-                            :title="joinClasses(border, shape, size, type)"
+                            :class="[border, shape, size, type, 'center']"
+                            :title="joinClasses(border, shape, size, type, 'center')"
                             @click="logEvent('click', $event)"
                           >
                             <span

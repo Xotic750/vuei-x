@@ -1,11 +1,11 @@
 /*!
 {
   "copyrite": "Copyright (c) 2017-present",
-  "date": "2018-12-31T16:48:27.227Z",
+  "date": "2019-01-01T00:47:14.565Z",
   "describe": "",
   "description": "Vue UI library",
   "file": "vuix.js",
-  "hash": "60f30b76d52d6faa75b0",
+  "hash": "6d1624bcf12b7ea53ffa",
   "license": "MIT",
   "version": "0.0.2"
 }

@@ -12,7 +12,10 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist __tests__/coverage",
+    "clean:dist": "rimraf dist",
+    "clean:docs": "rimraf docs",
+    "clean:coverage": "rimraf __tests__/coverage",
+    "clean": "npm run clean:dist && npm run clean:docs && npm run clean:coverage",
     "development": "npm run clean && NODE_ENV=development webpack --bail --config webpack.config.js --progress --profile --colors",
     "lint": "eslint -f 'node_modules/eslint-friendly-formatter' --ext .js,.vue,.json .",
     "lint-fix": "npm run lint -- --fix",
@@ -29,8 +32,8 @@
     "report": "npm run clean && NODE_ENV=production webpack --bail --config webpack.config.js --progress --profile --colors --env.report",
     "start": "nodemon --exec \"npm run production\" -e js,json,vue,gif --watch src --watch src/locales --watch src/images",
     "storybook": "start-storybook -p 9001 -c Storybook/.storybook",
-    "build-storybook": "build-storybook -c Storybook/.storybook -o docs",
-    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "npm run clean:docs && build-storybook -c Storybook/.storybook -o docs",
+    "deploy-storybook": "storybook-to-ghpages --existing-output-dir=docs --dry-run",
     "test": "jest"
   },
   "author": {
