@@ -8,7 +8,7 @@ const utils = require('./Libs/utils');
 const plugins = [postcssHTML, postcssURL, postcssSafe, postcssAutoprefixer];
 
 if (utils.IS_PRODUCTION) {
-  plugins.unshift(postcssNano);
+  plugins.push(postcssNano);
 }
 
 module.exports = {

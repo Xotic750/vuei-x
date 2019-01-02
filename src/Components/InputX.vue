@@ -26,6 +26,17 @@
           v-model="model"
           role="textbox"
           type="text"
+          :autocomplete="autocomplete"
+          :autofocus="autofocus"
+          :form="form"
+          :list="list"
+          :maxlength="maxlength"
+          :minlength="minlength"
+          :name="name"
+          :pattern="pattern"
+          :readonly="readonly"
+          :required="required"
+          :spellcheck="spellcheck"
           :tabindex="tabindex"
           data-input="true"
           :data-clearable="dataClearable"
@@ -43,7 +54,7 @@
       role="button"
       data-clear="true"
       :data-clear-visible="dataClearVisible"
-      :data-custom-icon="Boolean($slots.clearicon)"
+      :data-custom-icon="dataCustomIcon"
       :data-disabled="isDisabled"
       :aria-disabled="isDisabled"
       @click="onClick"
@@ -66,6 +77,10 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons/faTimesCircle';
 // noinspection ES6CheckImport
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import isValidWholeNumber from 'Utils/isValidWholeNumber';
+import isValidSearchNumber from 'RootDir/src/Utils/isValidSearchNumber';
+import isValidBooleanStringProp from 'Utils/isValidBooleanStringProp';
+import toTrueOrNull from 'Utils/toTrueOrNull';
 
 library.add(faTimesCircle);
 
@@ -80,6 +95,14 @@ export default {
   components: {FontAwesomeIcon},
 
   props: {
+    autocomplete: {
+      default: null,
+      type: String,
+    },
+    autofocus: {
+      default: null,
+      type: Boolean,
+    },
     clear: {
       default: false,
       type: Boolean,
@@ -88,25 +111,68 @@ export default {
       default: false,
       type: Boolean,
     },
+    form: {
+      default: null,
+      type: String,
+    },
     id: {
       default: null,
-      type: null,
+      type: String,
+    },
+    list: {
+      default: null,
+      type: String,
+    },
+    maxlength: {
+      default: null,
+      type: [Number, String],
+      validator: isValidWholeNumber,
+    },
+    minlength: {
+      default: null,
+      type: [Number, String],
+      validator: isValidWholeNumber,
+    },
+    name: {
+      default: null,
+      type: String,
+    },
+    pattern: {
+      default: null,
+      type: RegExp,
     },
     placeholder: {
       default: null,
-      type: null,
+      type: String,
+    },
+    readonly: {
+      default: null,
+      type: Boolean,
+    },
+    required: {
+      default: null,
+      type: Boolean,
+    },
+    spellcheck: {
+      default: null,
+      type: [Boolean, String],
+      validator: isValidBooleanStringProp,
     },
     tabindex: {
       default: null,
-      type: null,
+      type: [Number, String],
+      validator: isValidSearchNumber,
     },
     type: {
       default: null,
-      type: null,
+      type: String,
+      validator() {
+        return false;
+      },
     },
     value: {
       default: EMPTY_STRING,
-      type: null,
+      type: String,
     },
   },
 
@@ -123,16 +189,19 @@ export default {
 
   computed: {
     dataClearable() {
-      return Boolean(this.clear) || null;
+      return toTrueOrNull(this.clear);
+    },
+    dataCustomIcon() {
+      return toTrueOrNull(this.$slots.clearicon);
     },
     dataFocused() {
-      return Boolean(this.isFocused) || null;
+      return toTrueOrNull(this.isFocused);
     },
     dataActive() {
-      return Boolean(this.isActive && !this.disable) || null;
+      return toTrueOrNull(this.isActive && !this.disable);
     },
     dataClearVisible() {
-      return Boolean(!this.isDisabled && this.dataClearable && this.model) || null;
+      return toTrueOrNull(!this.isDisabled && this.dataClearable && this.model);
     },
     isDisabled() {
       return Boolean(this.disabled || this.disable);
@@ -249,6 +318,15 @@ div.vuix-input {
     opacity: inherit;
   }
 
+  &[data-active],
+  &[data-focused],
+  &:hover {
+    &:not([data-disabled]) > div[data-clear][data-clear-visible] {
+      /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+      display: inline-flex;
+    }
+  }
+
   & > div:first-child {
     /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
     display: inline-flex;
@@ -258,6 +336,7 @@ div.vuix-input {
     & > div {
       /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
       display: flex;
+      flex-grow: 1;
       // min-width: @full;
     }
 
@@ -292,18 +371,13 @@ div.vuix-input {
   }
 
   & > div[data-clear] {
-    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-    display: inline-flex;
+    display: none;
     position: relative;
     right: (@font-size-default + @padding);
     line-height: @zero;
 
     &:not([data-custom-icon]) {
       opacity: @two-thirds;
-    }
-
-    &:not([data-clear-visible]) {
-      display: none;
     }
 
     &:not([data-disabled]):hover {

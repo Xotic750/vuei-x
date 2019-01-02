@@ -15,6 +15,7 @@
                   <input-x
                     :key="k"
                     :class="[border, shape, size, type]"
+                    autocomplete="on"
                     @clear="logEvent('clear', $event)"
                     @click="logEvent('click', $event)"
                     @change="logEvent('change', $event)"

@@ -1,13 +1,13 @@
 /*!
 {
   "copyrite": "Copyright (c) 2017-present",
-  "date": "2019-01-01T00:47:14.565Z",
+  "date": "2019-01-02T20:07:23.108Z",
   "describe": "",
   "description": "Vue UI library",
   "file": "main.css",
-  "hash": "6d1624bcf12b7ea53ffa",
+  "hash": "1c2d6c8ae62482152cf9",
   "license": "MIT",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
 */
 .space-after:after,.space-before:before{content:" ";white-space:pre;display:inline-flex}.none{display:none!important}.hidden{visibility:hidden!important}.vuix[data-shapeable].round{border-radius:.25rem}.vuix[data-shapeable].pill{border-radius:1000000000rem}.vuix[data-shapeable].circle{border-radius:50%}.vuix[data-shapeable].right-angled{border-radius:0}.vuix[data-borderable].solid{border-style:solid}.vuix[data-borderable].dotted{border-style:dotted}.vuix[data-borderable].dashed{border-style:dashed}.vuix[data-borderable].borderless{border:none}.vuix[data-colorable].primary{background-color:#007bff;color:#fff}.vuix[data-colorable].secondary{background-color:#6c757d;color:#fff}.vuix[data-colorable].info{background-color:#17a2b8;color:#fff}.vuix[data-colorable].success{background-color:#28a745;color:#fff}.vuix[data-colorable].warning{background-color:#ffc107;color:#000}.vuix[data-colorable].error{background-color:#dc3544;color:#fff}.vuix[data-colorable].dark{background-color:#343a40;color:#fff}.vuix[data-colorable].light{background-color:#f8f9fa;color:#000}.vuix.vuix-input[data-blockable].block,.vuix[data-blockable].block{display:flex;width:100%}.vuix[data-focusable]:not(:disabled):not([data-disabled]):focus,.vuix[data-focused]:not(:disabled):not([data-disabled]){box-shadow:0 0 0 .125rem #00bfff}.vuix[data-hoverable]:not(:disabled):not([data-disabled]):hover{box-shadow:0 0 0 .125rem #0000cd}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active,.vuix[data-active]:not(:disabled):not([data-disabled]){box-shadow:0 0 0 .125rem #006dd9}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active:not(.borderless),.vuix[data-active]:not(:disabled):not([data-disabled]):not(.borderless){border-color:#9a9a9a silver silver #9a9a9a}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active>*,.vuix[data-active]:not(:disabled):not([data-disabled])>*{position:relative}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.primary,.vuix[data-active]:not(:disabled):not([data-disabled]).primary{background-color:#0074f0}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.secondary,.vuix[data-active]:not(:disabled):not([data-disabled]).secondary{background-color:#656d75}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.info,.vuix[data-active]:not(:disabled):not([data-disabled]).info{background-color:#1596aa}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.success,.vuix[data-active]:not(:disabled):not([data-disabled]).success{background-color:#259b40}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.warning,.vuix[data-active]:not(:disabled):not([data-disabled]).warning{background-color:#f7b900}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.error,.vuix[data-active]:not(:disabled):not([data-disabled]).error{background-color:#da2838}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.dark,.vuix[data-active]:not(:disabled):not([data-disabled]).dark{background-color:#2d3238}.vuix[data-activatable]:not(:disabled):not([data-disabled]):active.light,.vuix[data-active]:not(:disabled):not([data-disabled]).light{background-color:#eff1f4}.vuix[data-disabled]:not([data-wrapper-only]){cursor:default}.vuix[data-disabled]:not([data-wrapper-only]):not([data-cross]){opacity:.5}
@@ -98,9 +98,11 @@ div.vuix-input,div.vuix-input>div{outline:none;margin:0;padding:0;color:inherit
 }
 div.vuix-input>div{border:none;border-radius:inherit;cursor:inherit;background-color:transparent;font-size:inherit;opacity:inherit
 }
+div.vuix-input:hover:not([data-disabled])>div[data-clear][data-clear-visible],div.vuix-input[data-active]:not([data-disabled])>div[data-clear][data-clear-visible],div.vuix-input[data-focused]:not([data-disabled])>div[data-clear][data-clear-visible]{display:inline-flex
+}
 div.vuix-input>div:first-child{display:inline-flex;height:100%;min-width:100%
 }
-div.vuix-input>div:first-child>div{display:flex
+div.vuix-input>div:first-child>div{display:flex;flex-grow:1
 }
 div.vuix-input>div:first-child>div>input[data-input]{display:block;outline:none;margin:0;border:none;border-radius:inherit;width:100%;min-width:0;cursor:inherit;padding:.125rem 1rem;background-color:transparent;color:inherit;font-size:inherit;opacity:inherit
 }
@@ -116,11 +118,9 @@ div.vuix-input>div:first-child>div>input[data-input]::placeholder{color:rgba(0,0
 }
 div.vuix-input>div:first-child>div>input[data-input][data-clearable]{padding-right:2rem
 }
-div.vuix-input>div[data-clear]{display:inline-flex;position:relative;right:1.125rem;line-height:0
+div.vuix-input>div[data-clear]{display:none;position:relative;right:1.125rem;line-height:0
 }
 div.vuix-input>div[data-clear]:not([data-custom-icon]){opacity:.66666667
-}
-div.vuix-input>div[data-clear]:not([data-clear-visible]){display:none
 }
 div.vuix-input>div[data-clear]:not([data-disabled]):hover{cursor:pointer
 }

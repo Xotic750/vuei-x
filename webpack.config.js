@@ -328,12 +328,12 @@ module.exports = (env = {}) => {
   }
 
   if (utils.IS_PRODUCTION) {
-    const MINI_CSS_EXTRACT_PLGIN_INSTANCE = new MiniCssExtractPlugin({
+    const MINI_CSS_EXTRACT_PLUGIN_INSTANCE = new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     });
 
-    PLUGINS.push(MINI_CSS_EXTRACT_PLGIN_INSTANCE);
+    PLUGINS.push(MINI_CSS_EXTRACT_PLUGIN_INSTANCE);
   }
 
   return {
